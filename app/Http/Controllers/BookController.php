@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreBookRequest;
+use App\Http\Requests\UpdateBookRequest;
 use App\Models\Book;
 use App\Repositories\BookRepositoryInterface;
 use Illuminate\Http\Request;
@@ -18,18 +20,18 @@ class BookController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return $this->bookRepository->all();
+        return $this->bookRepository->all($request->input('limit'));
 
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreBookRequest $request)
     {
-        return $this->bookRepository->save($request->query());
+        return $this->bookRepository->save($request->validated());
     }
 
     /**
@@ -43,9 +45,9 @@ class BookController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Book $book)
+    public function update(UpdateBookRequest $request, Book $book)
     {
-       return $this->bookRepository->update($book->id, $request->query());
+       return $this->bookRepository->update($book->id, $request->validated());
     }
 
     /**

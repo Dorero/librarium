@@ -2,7 +2,7 @@
 namespace App\Repositories;
 
 interface BookRepositoryInterface {
-    public function all();
+    public function all(int $limit);
 
     public function find(int $id);
 

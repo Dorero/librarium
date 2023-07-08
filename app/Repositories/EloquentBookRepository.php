@@ -6,9 +6,13 @@ use App\Repositories\BookRepositoryInterface;
 
 class EloquentBookRepository implements BookRepositoryInterface
 {
-    public function all()
+    public function all($limit)
     {
-        return Book::all();
+
+        if($limit == null) $limit = 20;
+        if($limit > 50) $limit = 50;
+        
+        return Book::orderBy("id")->cursorPaginate($limit);
     }
 
     public function save(array $params)
