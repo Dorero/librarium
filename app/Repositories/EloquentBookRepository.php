@@ -15,7 +15,7 @@ class EloquentBookRepository implements BookRepositoryInterface
         return Book::orderBy("id")->cursorPaginate($limit);
     }
 
-    public function save(array $params)
+    public function create(array $params)
     {
         return Book::create($params);
     }

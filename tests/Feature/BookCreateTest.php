@@ -17,9 +17,7 @@ class BookCreateTest extends TestCase
     public function it_returns_the_book_on_successfully_creating_a_new_book(): void
     {
         $book = Book::factory()->make();
-        $response = $this->postJson('/api/books', $book->toArray());
-
-        $response->assertStatus(201)->assertJson($book->toArray());
+        $this->postJson('/api/books', $book->toArray())->assertCreated()->assertJson($book->toArray());
     }
 
 

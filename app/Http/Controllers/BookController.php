@@ -31,7 +31,7 @@ class BookController extends Controller
      */
     public function store(StoreBookRequest $request)
     {
-        return $this->bookRepository->save($request->validated());
+        return $this->bookRepository->create($request->validated());
     }
 
     /**

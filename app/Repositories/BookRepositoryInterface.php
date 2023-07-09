@@ -6,7 +6,7 @@ interface BookRepositoryInterface {
 
     public function find(int $id);
 
-    public function save(array $params);
+    public function create(array $params);
 
     public function update(int $id, array $params);
 
