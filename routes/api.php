@@ -23,8 +23,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
         'authors' => AuthorController::class,
         'books' => BookController::class,
     ]);
+    Route::delete("/logout", [AuthController::class, 'logout']);
 });
 
 Route::post("/register", [AuthController::class, 'register']);
-Route::post("/login", [AuthController::class, 'login']);
-Route::post("/logout", [AuthController::class, 'logout']);
+Route::post("/login", [AuthController::class, 'login'])->name("login");
