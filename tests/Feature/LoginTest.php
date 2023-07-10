@@ -28,12 +28,9 @@ class LoginTest extends TestCase
         $this->postJson('/api/login', [
             "email" => "bad@mail",
             "password" => "111233333332",
-        ])->assertStatus(422)
+        ])->assertStatus(401)
             ->assertJson([
-                'errors' => [
-                    'email' => ['must be a valid email address.'],
-                    'password' => ['must be a valid email address.'],
-                ]
+                'message' => 'Invalid login credentials'
             ]);
 
     }

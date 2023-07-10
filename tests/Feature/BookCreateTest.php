@@ -3,15 +3,16 @@
 namespace Tests\Feature;
 
 use App\Models\Book;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
 class BookCreateTest extends TestCase
 {
     use RefreshDatabase;
-
 
     /** @test */
     public function it_returns_the_book_on_successfully_creating_a_new_book(): void
@@ -46,5 +47,11 @@ class BookCreateTest extends TestCase
                 ]
             ]
         );
+    }
+
+    public function setUp(): void
+    {
+        parent::setUp();
+        Sanctum::actingAs(User::factory()->create());
     }
 }
