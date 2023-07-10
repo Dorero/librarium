@@ -6,6 +6,7 @@ use App\Http\Requests\RegisterAuthRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules\Password;
 
 
 class AuthController extends Controller
@@ -13,7 +14,7 @@ class AuthController extends Controller
 
     public function register(RegisterAuthRequest $request)
     {
-        return User::create($request->validated())->createToken('auth_token')->plainTextToken;
+        return response()->json(["token" => User::create($request->validated())->createToken('auth_token')->plainTextToken], 201);
     }
 
     public function login(Request $request)

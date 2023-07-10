@@ -17,10 +17,13 @@ use App\Http\Controllers\BookController;
 |
 */
 
-Route::apiResources([
-    'authors' => AuthorController::class,
-    'books' => BookController::class
-])->middleware(['auth:sanctum']);
+
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::apiResources([
+        'authors' => AuthorController::class,
+        'books' => BookController::class,
+    ]);
+});
 
 Route::post("/register", [AuthController::class, 'register']);
 Route::post("/login", [AuthController::class, 'login']);
