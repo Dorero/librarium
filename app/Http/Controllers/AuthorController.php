@@ -50,13 +50,13 @@ class AuthorController extends Controller
      *         response=200,
      *         description="Return authors collection successfully",
      *         @OA\JsonContent(
-     *             @OA\Property(property="data", type="array", @OA\Items(@OA\Schema(ref="#/schemas/Author")), example={
+     *             @OA\Property(property="data", type="array", @OA\Items(@OA\Schema(ref="#/schemas/Author")), example={{
      *                  "id": "3",
      *                  "firstName": "Bob",
      *                  "lastName": "Fanger",
      *                  "bio": "Est aperiam optio dolor id et earum. Quasi rem nobis quibusdam doloremque illo. Exercitationem explicabo temporibus quibusdam ut.",
      *                 
-     *                },)       
+     *                },})       
      *         )
      *     ),
      *     @OA\Response(

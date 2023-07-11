@@ -191,12 +191,14 @@
                                         "data": {
                                             "type": "array",
                                             "items": {},
-                                            "example": {
-                                                "id": "3",
-                                                "firstName": "Bob",
-                                                "lastName": "Fanger",
-                                                "bio": "Est aperiam optio dolor id et earum. Quasi rem nobis quibusdam doloremque illo. Exercitationem explicabo temporibus quibusdam ut."
-                                            }
+                                            "example": [
+                                                {
+                                                    "id": "3",
+                                                    "firstName": "Bob",
+                                                    "lastName": "Fanger",
+                                                    "bio": "Est aperiam optio dolor id et earum. Quasi rem nobis quibusdam doloremque illo. Exercitationem explicabo temporibus quibusdam ut."
+                                                }
+                                            ]
                                         }
                                     },
                                     "type": "object"
@@ -388,6 +390,242 @@
                         "description": "Updated successfully"
                     },
                     "404": {
+                        "description": "User not authenticated"
+                    }
+                }
+            }
+        },
+        "/api/books": {
+            "get": {
+                "tags": [
+                    "Book"
+                ],
+                "summary": "Return books collection",
+                "description": "Display books collection.",
+                "operationId": "displayBooks",
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Number of records to retrieve",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 15
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Return books collection successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {},
+                                            "example": [
+                                                {
+                                                    "id": "3",
+                                                    "title": "fugiat",
+                                                    "description": "Tenetur est error aperiam esse. Vel et quia aut nisi debitis rerum culpa. Tempora dolores totam asperiores accusantium eos ut animi.",
+                                                    "price": "2300.00",
+                                                    "created_at": "2023-07-11T15:26:43.000000Z",
+                                                    "updated_at": "2023-07-11T15:26:43.000000Z"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "User not authenticated"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Book"
+                ],
+                "summary": "Create a new book",
+                "description": "Store book.",
+                "operationId": "createBook",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "voluptatem"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Tenetur est error aperiam esse. Vel et quia aut nisi debitis rerum culpa. Tempora dolores totam asperiores accusantium eos ut animi."
+                                    },
+                                    "price": {
+                                        "type": "string",
+                                        "example": "1500.00"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "id": "3",
+                                    "title": "voluptatem",
+                                    "description": "Tenetur est error aperiam esse. Vel et quia aut nisi debitis rerum culpa. Tempora dolores totam asperiores accusantium eos ut animi.",
+                                    "price": "1500.00"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "User not authenticated"
+                    }
+                }
+            }
+        },
+        "/api/books/{id}": {
+            "get": {
+                "tags": [
+                    "Book"
+                ],
+                "summary": "Show book",
+                "description": "Display book.",
+                "operationId": "displayBook",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the book",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "default": 3
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Display book successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "id": "3",
+                                    "title": "voluptatem",
+                                    "description": "Tenetur est error aperiam esse. Vel et quia aut nisi debitis rerum culpa. Tempora dolores totam asperiores accusantium eos ut animi.",
+                                    "price": "1500.00"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "User not authenticated"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Book"
+                ],
+                "summary": "Update book",
+                "description": "Update book.",
+                "operationId": "updateBook",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the book",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "default": 3
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "voluptatem"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Tenetur est error aperiam esse. Vel et quia aut nisi debitis rerum culpa. Tempora dolores totam asperiores accusantium eos ut animi."
+                                    },
+                                    "price": {
+                                        "type": "string",
+                                        "example": "1500.00"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "id": "3",
+                                    "title": "voluptatem",
+                                    "description": "Tenetur est error aperiam esse. Vel et quia aut nisi debitis rerum culpa. Tempora dolores totam asperiores accusantium eos ut animi.",
+                                    "price": "1500.00"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "User not authenticated"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Book"
+                ],
+                "summary": "Delete book",
+                "description": "Remove book.",
+                "operationId": "deleteBook",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the book",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "default": 3
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Delete successfully"
+                    },
+                    "401": {
                         "description": "User not authenticated"
                     }
                 }
