@@ -6,6 +6,7 @@ This is a RestApi application with simple functionality, rough operations on aut
 
  ```
  git clone https://github.com/Dorero/librarium.git && cd librarium 
+ cp env.example env
  composer install
  ```
 
