@@ -9,18 +9,17 @@ also used to generate ui for api.
 
 ```
 git clone https://github.com/Dorero/librarium.git && cd librarium 
-cp env.example .env
+cp .env.example .env
 composer install
 ```
 
 # Run
 
 You must have docker and docker-compose installed on your computer. This command
-will start the local environment, keep this process in the background, do not
-close this terminal tab, enter other commands in other terminal tabs.
+will start the local environment, keep this process in the background.
 
 ```
-./vendor/bin/sail up 
+./vendor/bin/sail up -d
 ./vendor/bin/sail php artisan migrate
 ```
 
