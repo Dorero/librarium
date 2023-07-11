@@ -21,6 +21,7 @@ will start the local environment, keep this process in the background.
 ```
 ./vendor/bin/sail up -d
 ./vendor/bin/sail php artisan migrate
+./vendor/bin/sail php artisan db:seed
 ```
 
 # Test
