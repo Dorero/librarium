@@ -11,7 +11,7 @@ This is a RestApi application with simple functionality, rough operations on aut
 
  # Run
 
- You must have docker and docker compos installed on your computer. This command will start the local environment, keep this process in the background, do not close this terminal tab, enter other commands in other terminal tabs.
+ You must have docker and docker-compose installed on your computer. This command will start the local environment, keep this process in the background, do not close this terminal tab, enter other commands in other terminal tabs.
 
  ```
  ./vendor/bin/sail up 
